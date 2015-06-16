@@ -12,11 +12,13 @@ In this short presentation,
 
 
 
+
+
 You will need
 ========================================================
 - a computer
 - R or [Rstudio](http://www.rstudio.com) (free)
-- Access to 
+- Access to http://lehd.ces.census.gov/data/qwi/us/R2015Q1.
 
 Setting up the necessary QWI info
 ========================================================
@@ -58,7 +60,7 @@ This might take a few minutes:
 
 ```r
 conrv <- gzcon(url(
-  paste(nqwibase,release,qwirv_us_sa,
+  paste(nqwibase,release,type,qwirv_us_sa,
         sep="/")))
 txtv <- readLines(conrv)
 qwirv <- read.csv(textConnection(txtv))
@@ -117,7 +119,7 @@ Subset the data to manufacturing, certain age groups, keep ids and variables of 
 
 ```r
 myvars <- merge(
-  qwir[which(qwir$industry=="31-33" 
+  qwir[which(qwir$industry=="31-33"
              & qwir$agegrp %in% c("A04","A05")
              & qwir$sex   !="0"  ),
       c(as.vector(ids$Variable),
@@ -129,6 +131,17 @@ myvars <- merge(
 ```
 and some other setup (see code).
 
+```r
+library(zoo)
+library(ggplot2)
+library(RColorBrewer)
+#Handle quarterly data
+myvars$yyq <- as.Date(
+  as.yearqtr(
+    myvars$year+(myvars$quarter-1)/4,
+    format = "%yQ%q")
+  )
+```
 
 Create upper and lower 90% confidence bounds 
 ========================================================
@@ -136,9 +149,9 @@ Create upper and lower 90% confidence bounds
 
 ```r
 # Create bounds
-myvars$HirAEndR_lo <- 
+myvars$HirAEndR_lo <-
   myvars$HirAEndR - 1.645*myvars$st_HirAEndR
-myvars$HirAEndR_hi <- 
+myvars$HirAEndR_hi <-
   myvars$HirAEndR + 1.645*myvars$st_HirAEndR
 ```
 Strictly speaking, we would want this to be
@@ -149,19 +162,21 @@ but this is close enough.
 
 Plotting it all for women
 ==============
-![plot of chunk unnamed-chunk-11](Pres_qwi_error_bands-figure/unnamed-chunk-11-1.png) 
+![plot of chunk plot](Pres_qwi_error_bands-figure/plot-1.png) 
 
 Details
 =========
-
-![Github](images/GitHub-Mark-64px.png) Clone it from 
-
+left: 90%
+- Clone it from 
 https://github.com/labordynamicsinstitute/nqwi-readin
+- Download all R chunks at https://goo.gl/muAGwx .
+- View it at http://labordynamicsinstitute.github.io/nqwi-readin/
 
-View it at http://labordynamicsinstitute.github.io/nqwi-readin/
+***
+![Github](images/GitHub-Mark-64px.png) 
 
 License
 ==========
 ![by-nc 4.0](images/cc4-by-nc-88x31.png)
 
-Programs to read in National QWI files and variability measures by [Lars Vilhuber](http://www.vilhuber.com/lars/)  is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/)
+*QWI with confidence bands in R* by [Lars Vilhuber](http://www.vilhuber.com/lars/)  is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/)
