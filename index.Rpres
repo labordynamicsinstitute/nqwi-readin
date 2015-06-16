@@ -8,3 +8,6 @@ We have slides for
 - [QWI with confidence bands in R](Pres_qwi_error_bands.html)
 - QWI with confidence bands in SAS
 - [QWI with confidence bands in Excel](Pres_qwi_error_excel.html)
+
+![Github](images/GitHub-Mark-64px.png) 
+https://github.com/labordynamicsinstitute/nqwi-readin
