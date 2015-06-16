@@ -70,7 +70,7 @@ Subset the data to manufacturing, certain age groups, keep ids and variables of 
 ```{r subset}
 ```
 and some other setup (see code).
-```{r prepareplot}
+```{r prepareplot,echo=FALSE}
 ```
 
 Create upper and lower 90% confidence bounds 

@@ -949,17 +949,6 @@ qwirv &lt;- read.csv(textConnection(txtv))
 
 <p>and some other setup (see code).</p>
 
-<pre><code class="r">library(zoo)
-library(ggplot2)
-library(RColorBrewer)
-#Handle quarterly data
-myvars$yyq &lt;- as.Date(
-  as.yearqtr(
-    myvars$year+(myvars$quarter-1)/4,
-    format = &quot;%yQ%q&quot;)
-  )
-</code></pre>
-
 </div>
 
 </section>

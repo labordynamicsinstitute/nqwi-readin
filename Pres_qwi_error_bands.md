@@ -131,17 +131,6 @@ myvars <- merge(
 ```
 and some other setup (see code).
 
-```r
-library(zoo)
-library(ggplot2)
-library(RColorBrewer)
-#Handle quarterly data
-myvars$yyq <- as.Date(
-  as.yearqtr(
-    myvars$year+(myvars$quarter-1)/4,
-    format = "%yQ%q")
-  )
-```
 
 Create upper and lower 90% confidence bounds 
 ========================================================
