@@ -1,3 +1,8 @@
+# title: QWI with confidence bands in R
+# author: Lars Vilhuber
+# date: 2015-06-16
+# git: https://github.com/labordynamicsinstitute/nqwi-readin
+# 
 ## @knitr defs
 nqwibase <- "http://lehd.ces.census.gov/data/qwi/us"
 release <- "R2015Q1"
