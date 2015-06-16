@@ -151,6 +151,15 @@ Plotting it all for women
 ==============
 ![plot of chunk unnamed-chunk-11](Pres_qwi_error_bands-figure/unnamed-chunk-11-1.png) 
 
+Details
+=========
+
+![Github](images/GitHub-Mark-64px.png) Clone it from 
+
+https://github.com/labordynamicsinstitute/nqwi-readin
+
+View it at http://labordynamicsinstitute.github.io/nqwi-readin/
+
 License
 ==========
 ![by-nc 4.0](images/cc4-by-nc-88x31.png)
